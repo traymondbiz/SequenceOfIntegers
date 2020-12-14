@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class MarksFileParser {
 
-    public Stack<Integer> parseFile(File file) throws IOException {
+    public static Stack<Integer> parseFile(File file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         Stack<Integer> readContents = new Stack<>();
 
