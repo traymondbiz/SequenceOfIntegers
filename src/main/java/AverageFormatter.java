@@ -3,10 +3,17 @@ public class AverageFormatter {
     private static final String FORMATTED_TEXT = "The course average is ";
 
     public static String getOutputStatement(double average){
-        return FORMATTED_TEXT + String.format("%.1f", average);
+
+        double roundedOffDouble = Double.parseDouble(String.format("%.1f", average));
+
+        if (hasDecimalValues(roundedOffDouble)){
+            return FORMATTED_TEXT + roundedOffDouble;
+        }
+        return FORMATTED_TEXT + String.format("%d", (int) average);
     }
 
-    public static String getOutputStatement(int average){
-        return FORMATTED_TEXT + average;
+    private static boolean hasDecimalValues(double average) {
+        String[] averageSplitByDecimal = Double.toString(average).split("\\.");
+        return Integer.parseInt(averageSplitByDecimal[1]) != 0;
     }
 }
